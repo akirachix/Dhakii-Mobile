@@ -11,11 +11,20 @@
         android:theme="@style/Theme.MamaMindTrial"
         tools:targetApi="31">
         <activity
-            android:name=".Signup"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Other activities -->
+        <activity
+            android:name=".SecondActivity"
+            android:exported="true" />
+        <activity
+            android:name=".VisitedActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
