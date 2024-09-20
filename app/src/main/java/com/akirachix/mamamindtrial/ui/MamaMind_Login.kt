@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.akirachix.mamamindtrial.NextSignUp
 import com.akirachix.mamamindtrial.R
 import com.akirachix.mamamindtrial.viewModel.SignInViewModel
 import com.akirachix.mamamindtrial.databinding.ActivityMamaMindLoginBinding
@@ -33,11 +34,18 @@ class MamamindLogin : AppCompatActivity() {
         binding = ActivityMamaMindLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         supportActionBar?.hide()
         auth = FirebaseAuth.getInstance()
         configureGoogleSignIn()
         observeLoginResult()
         setupClickListeners()
+
+        binding.signUpText.setOnClickListener{
+            val intent = Intent(this, NextSignUp::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun configureGoogleSignIn() {
@@ -119,4 +127,5 @@ class MamamindLogin : AppCompatActivity() {
     private fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
 }
