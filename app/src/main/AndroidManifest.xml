@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -10,6 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MamaMindTrial"
         tools:targetApi="31">
+
+        <!-- Specify MainActivity as the launcher -->
         <activity
             android:name=".NextSignUp"
             android:exported="true">
@@ -28,6 +29,24 @@
             android:exported="false" />
 
         <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Other activities in your application -->
+        <activity android:name=".Mamamind_teaser" android:exported="false" />
+        <activity android:name=".Mammind_m" android:exported="false" />
+        <activity android:name=".Mamamind_login" android:exported="false" />
+        <activity android:name=".mamamind" android:exported="false" />
+
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
             android:name=".Chp_profile"
             android:exported="false" />
 
