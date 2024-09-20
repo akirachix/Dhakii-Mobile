@@ -29,7 +29,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Mamamind_login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,15 +40,15 @@
         <!-- Other activities in your application -->
         <activity android:name=".Mamamind_teaser" android:exported="false" />
         <activity android:name=".Mammind_m" android:exported="false" />
-        <activity android:name=".Mamamind_login" android:exported="false" />
+<!--        <activity android:name=".Mamamind_login" android:exported="false" />-->
         <activity android:name=".mamamind" android:exported="false" />
 
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-            android:name=".Chp_profile"
-            android:exported="false" />
+<!--            android:name=".Chp_profile"-->
+<!--            android:exported="false" />-->
 
         <activity
             android:name=".SignUp"
