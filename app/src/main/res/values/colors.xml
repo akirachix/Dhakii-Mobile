@@ -9,7 +9,15 @@
     <color name="purple_700">#3700B3</color>
     <color name="teal_200">#03DAC5</color>
     <color name="teal_700">#018786</color>
-    <color name="purple_200">#BB86FC</color>
+    <color name="blue">#02A6A6</color>
+    <color name="red">#FD1D1D</color>
+    <color name="green">#43A02A</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="color_for_second_activity">#FD1D1D</color>
+    <color name="color_for_visited_activity">#43A02A</color>
+    <color name="color_for_main_activity">#02A6A6</color>
+    <color name="border_colo">#FF000000</color>
+    <color name="border_color">#756A6A</color>
 
 
 

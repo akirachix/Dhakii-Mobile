@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+  
 }
 
 android {
@@ -49,4 +50,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation (libs.kotlinx.coroutines.android)
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
+    implementation ("androidx.activity:activity-ktx:1.9.2")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
 }

@@ -3,10 +3,13 @@ package com.postman.mamamind
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.akirachix.mamamindtrial.R
 import com.akirachix.mamamindtrial.databinding.MotherItemBinding
 
-
-class MothersAdapter(private val mothersList: List<String>) : RecyclerView.Adapter<MothersAdapter.MotherViewHolder>() {
+class MothersAdapter(
+    private var mothersList: List<String>,
+    private val viewColor: Int // Color for the "View" text
+) : RecyclerView.Adapter<MothersAdapter.MotherViewHolder>() {
 
     // ViewHolder class now uses View Binding
     class MotherViewHolder(val binding: MotherItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -23,9 +26,22 @@ class MothersAdapter(private val mothersList: List<String>) : RecyclerView.Adapt
         holder.binding.nameTextView.text = name
         // Set "View" text
         holder.binding.viewTextView.text = "View"
+
+        // Set the text color passed from the fragment
+        holder.binding.viewTextView.setTextColor(viewColor)
+
+        // Optionally handle click events if you want to perform an action on "View"
+        holder.binding.viewTextView.setOnClickListener {
+            // Implement any navigation logic if required
+        }
     }
 
     override fun getItemCount(): Int {
         return mothersList.size
+    }
+
+    fun updateMothers(newMothers: List<String>) {
+        mothersList = newMothers
+        notifyDataSetChanged() // Refresh the adapter
     }
 }

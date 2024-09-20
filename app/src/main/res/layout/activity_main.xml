@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <!-- Title for the page -->
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -12,8 +13,9 @@
         android:text="Mothers’ Details"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/nunito"
         android:layout_marginTop="16dp"
-        android:textStyle="bold" />
+        android:textColor="@android:color/black" />
 
     <!-- Tab layout for Due Visit, Missed Visit, Visited -->
     <LinearLayout
@@ -31,38 +33,38 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Due Visit"
-            android:textColor="#2196F3"
+            android:fontFamily="@font/nunito"
+            android:textColor="#02A6A6"
             android:textSize="18sp"
             android:textStyle="bold" />
-
 
         <TextView
             android:id="@+id/missedVisitTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Missed Visit"
-            android:textSize="18sp"
             android:padding="16dp"
-            android:textColor="#FF000000" />
+            android:text="Missed Visit"
+            android:fontFamily="@font/nunito"
+            android:textColor="#FF000000"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/visitedTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Visited"
+            android:fontFamily="@font/nunito"
             android:textSize="18sp"
             android:padding="16dp"
             android:textColor="#FF000000" />
     </LinearLayout>
 
-    <!-- RecyclerView for list of mothers -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <!-- Fragment container -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/tabLayout"
-        android:padding="16dp" />
-
-    <!-- Bottom Navigation Bar -->
+        android:layout_margin="16dp" />
 
 </RelativeLayout>
