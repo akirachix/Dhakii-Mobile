@@ -1,38 +1,35 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Mamamind_login">
-
+    tools:context=".ui.MamaMind_Login">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="252dp"
         android:layout_height="234dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mother3" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/username_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Email address"
+        android:text="Username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView3" />
 
-
-    <!-- Login Button -->
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
@@ -42,13 +39,13 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text_border"
         android:fontFamily="@font/nunito"
-        android:hint="Enter email address"
+        android:hint="Enter username"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView5" />
+        app:layout_constraintTop_toBottomOf="@id/username_input" />
 
     <TextView
         android:id="@+id/textView6"
@@ -63,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextEmail" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/password_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -91,9 +88,8 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@id/password_input" />
 
-    <!-- OR Label -->
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -105,9 +101,8 @@
         app:layout_constraintTop_toBottomOf="@id/loginbtn"
         android:layout_marginTop="16dp"/>
 
-    <!-- Google Sign-In Button -->
     <Button
-        android:id="@+id/signinwithgooglebtn"
+        android:id="@+id/sign_in_button"
         android:layout_width="281dp"
         android:layout_height="52dp"
         android:drawableLeft="@drawable/google_svgrepo_com"
@@ -120,10 +115,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView7"
         android:background="@drawable/google_button_border"
-        style="@style/OutlinedButton"
-
-        />
-
+        style="@style/OutlinedButton" />
 
     <TextView
         android:id="@+id/textView8"
@@ -131,24 +123,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/nunito"
-        android:text="Don’t have an account?"
+        android:text="Don't have an account?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signinwithgooglebtn" />
+        app:layout_constraintTop_toBottomOf="@id/sign_in_button" />
 
     <TextView
-        android:id="@+id/signupbtn"
+        android:id="@+id/signUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="76dp"
-
         android:fontFamily="@font/nunito_bold"
         android:padding="12dp"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/signinwithgooglebtn" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,9 @@
-package com.akirachix.mamamindtrial
+package com.akirachix.mamamindtrial.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.akirachix.mamamindtrial.R
 
 class mamamind : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

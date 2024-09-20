@@ -1,11 +1,8 @@
-package com.akirachix.mamamindtrial
+package com.akirachix.mamamindtrial.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.akirachix.mamamindtrial.databinding.ActivityMamamindBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.getstartedbutton.setOnClickListener {
-            val intent= Intent(this, Mammind_m::class.java)
+            val intent= Intent(this, Mammind_M::class.java)
                      startActivity(intent)
         }
 

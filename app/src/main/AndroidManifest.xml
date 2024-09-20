@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -12,7 +13,7 @@
 
         <!-- Specify MainActivity as the launcher -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +22,9 @@
         </activity>
 
         <!-- Other activities in your application -->
-        <activity android:name=".Mamamind_teaser" android:exported="false" />
-        <activity android:name=".Mammind_m" android:exported="false" />
-        <activity android:name=".Mamamind_login" android:exported="false" />
-        <activity android:name=".mamamind" android:exported="false" />
+        <activity android:name=".ui.Mamamind_teaser" android:exported="false" />
+        <activity android:name=".ui.MamamindLogin" android:exported="false" />
+        <activity android:name=".ui.Mammind_M" android:exported="false" />
 
 
         <meta-data
