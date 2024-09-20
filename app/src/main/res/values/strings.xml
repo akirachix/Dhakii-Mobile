@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MamaMindTrial</string>
+
+    <string name="default_web_client_id">your-client-id-here</string>
+
     <string name="title_activity_nav_graph">nav_graph</string>
     <string name="title_home">Home</string>
     <string name="title_mothers">Mothers</string>

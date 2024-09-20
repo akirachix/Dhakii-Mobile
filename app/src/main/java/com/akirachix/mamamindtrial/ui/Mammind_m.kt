@@ -1,14 +1,11 @@
-package com.akirachix.mamamindtrial
+package com.akirachix.mamamindtrial.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.akirachix.mamamindtrial.databinding.ActivityMammindMBinding
 
-class Mammind_m : AppCompatActivity() {
+class Mammind_M : AppCompatActivity() {
   lateinit var binding: ActivityMammindMBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,11 +15,11 @@ class Mammind_m : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.nextbtn.setOnClickListener {
-            val intent = Intent(this,Mamamind_teaser::class.java)
+            val intent = Intent(this, Mamamind_teaser::class.java)
             startActivity(intent)
         }
         binding.skipbtn.setOnClickListener {
-            val intent =Intent(this, Mamamind_login::class.java)
+            val intent =Intent(this, Mamamind_teaser::class.java)
             startActivity(intent)
         }
 
