@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Mother Name"
+            android:fontFamily="@font/nunito"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"/>
@@ -27,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="View"
+            android:fontFamily="@font/nunito"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="14sp"
             android:textStyle="bold"/>

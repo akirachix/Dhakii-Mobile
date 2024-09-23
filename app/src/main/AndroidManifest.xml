@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,40 +11,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MamaMindTrial"
-        tools:targetApi="31">
-
-        <!-- MainActivity as the default launcher -->
+        tools:targetApi="31" >
+        <activity
+            android:name=".fragment_Mental_health"
+            android:exported="false" />
+        <activity
+            android:name=".fragment_mental_health"
+            android:exported="false" />
+        <activity
+            android:name=".Mental_Health"
+            android:exported="false" /> <!-- MainActivity as the default launcher -->
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- MainActivity2 or VisitActivity -->
+        </activity> <!-- MainActivity2 or VisitActivity -->
         <activity
             android:name=".ui.MainActivity2"
-            android:exported="true" />
-
-        <!-- Other activities -->
+            android:exported="true" /> <!-- Other activities -->
         <activity
             android:name=".NextSignUp"
             android:exported="true" />
-
         <activity
             android:name=".HomePage"
             android:exported="false" />
-
         <activity
             android:name=".ui.MamamindLogin"
             android:exported="true" />
-
-        <activity android:name=".ui.Mamamind_teaser" android:exported="false" />
-        <activity android:name=".ui.Mammind_M" android:exported="false" />
-<!--        <activity android:name=".ui.Mamamind" android:exported="false" />-->
-
+        <activity
+            android:name=".ui.Mamamind_teaser"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Mammind_M"
+            android:exported="false" /> <!-- <activity android:name=".ui.Mamamind" android:exported="false" /> -->
         <!-- Meta-data for preloaded fonts -->
         <meta-data
             android:name="preloaded_fonts"
@@ -54,4 +57,5 @@
             android:name=".SignUp"
             android:exported="false" />
     </application>
+
 </manifest>

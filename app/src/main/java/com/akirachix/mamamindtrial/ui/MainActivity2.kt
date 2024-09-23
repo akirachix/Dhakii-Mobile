@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.akirachix.mamamindtrial.HomePage
 import com.akirachix.mamamindtrial.R
 import com.akirachix.mamamindtrial.databinding.ActivityMainBinding
 
@@ -20,6 +21,11 @@ class MainActivity2: AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener{
+            val intent= Intent(this, HomePage::class.java)
+            startActivity(intent)
+            finish()
+        }
         supportActionBar?.hide()
 
         // Initially load the DueVisitFragment
