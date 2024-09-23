@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "860568886981",
+    "project_id": "mamamind-d37b1",
+    "storage_bucket": "mamamind-d37b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860568886981:android:78045ed1e293153d621aac",
+        "android_client_info": {
+          "package_name": "com.akirachix.mamamind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFihrit3t7DMRvlSrMr6pK1Dnh2DwQ0K8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860568886981:android:47e170cb2d0e4c6e621aac",
+        "android_client_info": {
+          "package_name": "com.akirachix.mamamindtrial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFihrit3t7DMRvlSrMr6pK1Dnh2DwQ0K8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
