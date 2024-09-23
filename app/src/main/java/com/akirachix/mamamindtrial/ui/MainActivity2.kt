@@ -1,6 +1,6 @@
 package com.akirachix.mamamindtrial.ui
 
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +9,10 @@ import androidx.fragment.app.Fragment
 import com.akirachix.mamamindtrial.R
 import com.akirachix.mamamindtrial.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity2: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             loadFragment(VisitedFragment())
             setTabColors(binding.visitedTab)
         }
+
+
+
     }
 
     private fun loadFragment(fragment: Fragment) {
@@ -80,3 +84,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+

@@ -9,13 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akirachix.mamamindtrial.api.MotherDetail
 import com.akirachix.mamamindtrial.api.RetrofitClient
-import com.akirachix.mamamindtrial.databinding.FragmentMissedVisitBinding
-import com.postman.mamamind.MothersAdapter
+import com.akirachix.mamamindtrial.databinding.FragmentDueVisitBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import com.akirachix.mamamindtrial.R
-
+import com.akirachix.mamamindtrial.databinding.FragmentMissedVisitBinding
 
 class MissedVisitFragment : Fragment() {
 
@@ -25,12 +24,12 @@ class MissedVisitFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMissedVisitBinding.inflate(inflater, container, false)
         setupRecyclerView()
-        fetchMissedMothers()
+        fetchDueMothers()
         return binding.root
     }
 
     private fun setupRecyclerView() {
-        // Use red color for Missed Visit
+        // Use yellow color for Due Visit
         val viewColor = resources.getColor(R.color.red, null)
         mothersAdapter = MothersAdapter(emptyList(), viewColor)
         binding.recyclerView.apply {
@@ -38,13 +37,13 @@ class MissedVisitFragment : Fragment() {
             adapter = mothersAdapter
         }
     }
-    private fun fetchMissedMothers() {
+
+    private fun fetchDueMothers() {
         val call = RetrofitClient.apiService.getMothersList()
         call.enqueue(object : Callback<List<MotherDetail>> {
             override fun onResponse(call: Call<List<MotherDetail>>, response: Response<List<MotherDetail>>) {
                 if (response.isSuccessful) {
                     val mothers = response.body() ?: emptyList()
-                    // Map MotherDetail to String
                     val mothersNames = mothers.map { "${it.firstName} ${it.lastName}" }
                     mothersAdapter.updateMothers(mothersNames.filter { it.isNotEmpty() })
                 } else {
@@ -52,14 +51,9 @@ class MissedVisitFragment : Fragment() {
                 }
             }
 
-
             override fun onFailure(call: Call<List<MotherDetail>>, t: Throwable) {
                 Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
-
-
 }
-

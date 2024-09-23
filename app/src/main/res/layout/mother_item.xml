@@ -1,45 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="4dp"
-    android:padding="8dp"
-    android:backgroundTint="@android:color/white"
-    app:cardCornerRadius="12dp"
-
-    >
+    android:elevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        >
+        android:gravity="center_vertical">
 
-        <!-- Mother's Name -->
         <TextView
-            android:id="@+id/nameTextView"
+            android:id="@+id/mother_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Mother's Name"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:text="Mother Name"
             android:textColor="@android:color/black"
-            android:fontFamily="@font/nunito"/>
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
-        <!-- Button to view details -->
         <TextView
-            android:id="@+id/viewTextView"
+            android:id="@+id/view_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="View"
-            android:textSize="16sp"
-            android:fontFamily="@font/nunito"
-            android:textColor="#02A6A6"
-            />
-    </LinearLayout>
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

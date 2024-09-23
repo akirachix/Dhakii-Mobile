@@ -1,4 +1,4 @@
-package com.postman.mamamind
+package com.akirachix.mamamindtrial.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,15 +23,15 @@ class MothersAdapter(
     override fun onBindViewHolder(holder: MotherViewHolder, position: Int) {
         val name = mothersList[position]
         // Set mother's name
-        holder.binding.nameTextView.text = name
+        holder.binding.motherName.text = name
         // Set "View" text
-        holder.binding.viewTextView.text = "View"
+        holder.binding.viewButton.text = "View"
 
         // Set the text color passed from the fragment
-        holder.binding.viewTextView.setTextColor(viewColor)
+        holder.binding.viewButton.setTextColor(viewColor)
 
         // Optionally handle click events if you want to perform an action on "View"
-        holder.binding.viewTextView.setOnClickListener {
+        holder.binding.viewButton.setOnClickListener {
             // Implement any navigation logic if required
         }
     }
