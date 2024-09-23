@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akirachix.mamamindtrial.api.MotherDetail
 import com.akirachix.mamamindtrial.api.RetrofitClient
-import com.akirachix.mamamindtrial.databinding.FragmentDueVisitBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

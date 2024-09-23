@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 
 interface ApiService {
-    @GET("api/mothers/")  // Replace with the actual endpoint
+    @GET("api/mothers/")
     fun getMothersList(): Call<List<MotherDetail>>
 
 
