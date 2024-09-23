@@ -35,7 +35,6 @@ class MamamindLogin : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         supportActionBar?.hide()
         auth = FirebaseAuth.getInstance()
         configureGoogleSignIn()

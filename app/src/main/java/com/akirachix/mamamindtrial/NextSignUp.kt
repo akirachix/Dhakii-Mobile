@@ -22,6 +22,7 @@ class NextSignUp : AppCompatActivity() {
             startActivity(intent)
         }
 
+
 //        binding.buttonNext.setOnClickListener{
 //            validateLogin()
 //        }
