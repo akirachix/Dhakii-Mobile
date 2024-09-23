@@ -1,15 +1,20 @@
 package com.akirachix.mamamindtrial
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.akirachix.mamamindtrial.api.MotherDetail
 import com.akirachix.mamamindtrial.databinding.FragmentMothersBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.akirachix.mamamindtrial.ui.MissedVisitFragment
 import com.akirachix.mamamindtrial.ui.DueVisitFragment
+import com.akirachix.mamamindtrial.ui.MothersAdapter
 import com.akirachix.mamamindtrial.ui.VisitedFragment
 
 class MothersFragment : Fragment() {
@@ -26,6 +31,8 @@ class MothersFragment : Fragment() {
 
         val adapter = MothersPagerAdapter(this)
         binding.viewPager.adapter = adapter
+
+
 
         // Setup TabLayout with ViewPager2
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

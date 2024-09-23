@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.0"
+constraintlayoutVersion = "2.0.4"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -13,14 +14,18 @@ constraintlayout = "2.1.4"
 google-services = "4.3.15"
 firebase-bom = "32.1.1"
 play-services-auth = "20.5.0"
+retrofit="2.9.0"
 
 lifecycleLivedataKtx = "2.8.5"
 lifecycleViewmodelKtx = "2.8.5"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 
+
 [libraries]
+androidx-constraintlayout-v204 = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -36,6 +41,7 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
