@@ -14,6 +14,7 @@ class CareGuideActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
 
         // Initializing ViewBinding
         binding = ActivityCareGuideBinding.inflate(layoutInflater)
@@ -24,20 +25,7 @@ class CareGuideActivity : AppCompatActivity() {
         // Load the default fragment (CareGuideFragment)
         loadFragment(CareGuideFragment())
 
-//        // Bottom Navigation listener to switch between fragments
-//        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-//            var fragment: Fragment? = null
-//            when (item.itemId) {
-//                R.id.nav_home -> fragment = HomeFragment()
-//                R.id.nav_care_guide -> fragment = CareGuideFragment() // Care guide fragment
-//                R.id.nav_mothers -> fragment = MothersFragment()
-//                R.id.nav_profile -> fragment = ProfileFragment()
-//            }
-//            if (fragment != null) {
-//                loadFragment(fragment)
-//            }
-//            true
-//        }
+//
     }
 
     // Function to load fragments into the container

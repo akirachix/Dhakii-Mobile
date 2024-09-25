@@ -1,9 +1,11 @@
 package com.akirachix.mamamindtrial
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.akirachix.mamamindtrial.databinding.ActivityHomePageBinding
+import com.akirachix.mamamindtrial.ui.MainActivity2
 
 class HomePage : AppCompatActivity() {
     lateinit var binding: ActivityHomePageBinding
@@ -14,22 +16,29 @@ class HomePage : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(binding.root)
 
+
+
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
+                    // Load HomeFragment when Home is selected
                     loadFragment(HomeFragment())
                     true
                 }
                 R.id.careguide -> {
+                    // Load CareGuideFragment when Careguide is selected
                     loadFragment(CareGuideFragment())
                     true
                 }
-                R.id.profile -> {
-                    loadFragment(ProfileFragment())
+                R.id.mothers -> {
+                    // Start MainActivity2 when Mothers is selected
+                    val intent = Intent(this, MainActivity2::class.java)
+                    startActivity(intent)
                     true
                 }
-                R.id.mothers -> {
-                    loadFragment(MothersFragment())
+                R.id.profile -> {
+                    // Load ProfileFragment when Profile is selected
+                    loadFragment(ProfileFragment())
                     true
                 }
                 else -> false

@@ -1,4 +1,4 @@
-package com.akirachix.mamamindtrial.network
+package com.akirachix.mamamindtrial.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
