@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MamaMindTrial"
+<<<<<<< HEAD
         tools:targetApi="31">
 
         <!-- CareGuideActivity -->
@@ -20,6 +23,10 @@
 
 
         <!-- MainActivity -->
+=======
+        tools:targetApi="31" >
+
+>>>>>>> bef1f98eb6944153bd050f474211d112eab46e64
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
@@ -29,7 +36,12 @@
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
         <!-- Other activities -->
+=======
+
+
+>>>>>>> bef1f98eb6944153bd050f474211d112eab46e64
         <activity
             android:name=".ui.MainActivity2"
             android:exported="true" />
@@ -53,6 +65,7 @@
         <activity
             android:name=".ui.Mammind_M"
             android:exported="false" />
+<<<<<<< HEAD
 
 
         <activity
@@ -60,6 +73,8 @@
             android:exported="false" />
 
         <!-- Meta-data for preloaded fonts -->
+=======
+>>>>>>> bef1f98eb6944153bd050f474211d112eab46e64
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -68,6 +83,20 @@
         <activity
             android:name=".SignUp"
             android:exported="false" />
+<<<<<<< HEAD
+=======
+        <activity
+            android:name=".Successfull_submission"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Questions"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+>>>>>>> bef1f98eb6944153bd050f474211d112eab46e64
 
     </application>
 

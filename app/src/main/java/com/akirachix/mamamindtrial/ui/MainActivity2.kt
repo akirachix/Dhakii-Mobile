@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.akirachix.mamamindtrial.HomePage
 import com.akirachix.mamamindtrial.R
+import com.akirachix.mamamindtrial.Successfull_submission
 import com.akirachix.mamamindtrial.databinding.ActivityMainBinding
 
 class MainActivity2: AppCompatActivity() {
@@ -27,6 +28,8 @@ class MainActivity2: AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
         supportActionBar?.hide()
 
         // Initially load the DueVisitFragment
@@ -48,6 +51,7 @@ class MainActivity2: AppCompatActivity() {
             loadFragment(VisitedFragment())
             setTabColors(binding.visitedTab)
         }
+
 
 
 

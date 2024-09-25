@@ -1,6 +1,9 @@
 package com.akirachix.mamamindtrial.api
 import com.google.gson.annotations.SerializedName
 
+import android.os.Parcel
+import android.os.Parcelable
+
 data class MotherDetail(
     @SerializedName("id") val motherId: Int,
     @SerializedName("first_name") val firstName: String,
@@ -13,6 +16,4 @@ data class MotherDetail(
     @SerializedName("sub_location") val subLocation: String,
     @SerializedName("village") val village: String
 )
-
-
 
