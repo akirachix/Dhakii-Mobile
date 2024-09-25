@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<TableLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+app:layout_constraintTop_toBottomOf="@id/profileImageView"
+    android:layout_marginTop="32dp"
+    android:stretchColumns="1">
+
+    <!-- Name Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Name:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/nameTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="MarieNana Momoa" />
+</TableRow>
+
+    <!-- Reg No Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Reg No:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/regNoTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="30266-00100" />
+</TableRow>
+
+    <!-- Hospital Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hospital:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/hospitalTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Kamukunji" />
+</TableRow>
+
+    <!-- Location Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Location:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/locationTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Pumwani Hospital" />
+</TableRow>
+
+    <!-- Sub-Location Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sub-Location:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/subLocationTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Eastleigh" />
+</TableRow>
+
+    <!-- Village Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Village:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/villageTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Maina Wanjigi" />
+</TableRow>
+
+    <!-- Number of Mothers Row -->
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Number of mothers:"
+    android:textStyle="bold" />
+<TextView
+    android:id="@+id/mothersTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="50" />
+</TableRow>
+
+    </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

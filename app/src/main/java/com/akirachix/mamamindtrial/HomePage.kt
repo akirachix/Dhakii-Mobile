@@ -38,7 +38,7 @@ class HomePage : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     // Load ProfileFragment when Profile is selected
-                    loadFragment(ProfileFragment())
+                    loadFragment(ChpProfileFragment())
                     true
                 }
                 else -> false
