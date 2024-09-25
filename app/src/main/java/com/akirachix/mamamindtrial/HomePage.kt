@@ -8,7 +8,7 @@ import com.akirachix.mamamindtrial.databinding.ActivityHomePageBinding
 import com.akirachix.mamamindtrial.ui.MainActivity2
 
 class HomePage : AppCompatActivity() {
-    lateinit var binding: ActivityHomePageBinding
+    lateinit var binding:ActivityHomePageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
