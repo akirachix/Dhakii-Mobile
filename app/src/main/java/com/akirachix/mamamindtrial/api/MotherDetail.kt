@@ -14,6 +14,7 @@ data class MotherDetail(
     @SerializedName("tel_no") val telNo: String,
     @SerializedName("marital_status") val maritalStatus: String,
     @SerializedName("sub_location") val subLocation: String,
-    @SerializedName("village") val village: String
+    @SerializedName("village") val village: String,
+    var visitStatus: String = "due"
 )
 

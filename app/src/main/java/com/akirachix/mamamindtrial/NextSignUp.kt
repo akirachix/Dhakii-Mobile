@@ -23,35 +23,30 @@ class NextSignUp : AppCompatActivity() {
         }
 
 
-//        binding.buttonNext.setOnClickListener{
-//            validateLogin()
-//        }
-
-//    }
-//    fun validateLogin(){
-//        var formErr = false
-//        clearErrors()
-//        val username = binding.editTextUsername.text.toString()
-//        if (username.isBlank()) {
-//            formErr = true
-//            binding.editTextUsername.error = "Username is required"
-//        }
-//
-//        val email = binding.editTextEmail.text.toString()
-//        if (email.isBlank()) {
-//            formErr = true
-//            binding.editTextEmail.error = "Password is required"
-//        }
-//
-//        val phone = binding.editTextPhoneNumber.text.toString()
-//        if (phone.isBlank()) {
-//            formErr = true
-//            binding.editTextPhoneNumber.error = "Phone Number Required is required"
-//        }
-//    }
-//
-//    fun clearErrors(){
-//        binding.editTextEmail.error = null
-//    }
     }
-}
+    fun validateLogin(){
+        var formErr = false
+        clearErrors()
+        val username = binding.editTextUsername.text.toString()
+        if (username.isBlank()) {
+            formErr = true
+            binding.editTextUsername.error = "Username is required"
+        }
+
+        val email = binding.editTextEmail.text.toString()
+        if (email.isBlank()) {
+            formErr = true
+            binding.editTextEmail.error = "Email is required"
+        }
+
+        val phone = binding.editTextPhoneNumber.text.toString()
+        if (phone.isBlank()) {
+            formErr = true
+            binding.editTextPhoneNumber.error = "Phone Number Required is required"
+        }
+    }
+
+    fun clearErrors(){
+        binding.editTextEmail.error = null
+    }
+    }

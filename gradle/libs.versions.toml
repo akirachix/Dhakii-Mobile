@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.0"
+converterGsonVersion = "2.9.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -7,12 +8,18 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompatVersion = "1.7.0"
 kotlinxCoroutinesAndroid = "1.7.3"
+lifecycleLivedataKtxVersion = "2.8.4"
+lifecycleViewmodelKtxVersion = "2.8.4"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayoutVersion = "2.1.4"
 google-services = "4.3.15"
 firebase-bom = "32.1.1"
+<<<<<<< Updated upstream
 materialVersion = "1.4.0"
+=======
+materialVersion = "1.9.0"
+>>>>>>> Stashed changes
 play-services-auth = "20.5.0"
 retrofit="2.9.0"
 
@@ -20,14 +27,24 @@ lifecycleLivedataKtx = "2.8.5"
 lifecycleViewmodelKtx = "2.8.5"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
+retrofitVersion = "2.9.0"
+roomRuntime = "2.6.1"
 
 
 [libraries]
+<<<<<<< Updated upstream
 androidx-appcompat-v140 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+=======
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-livedata-ktx-v284 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtxVersion" }
+androidx-lifecycle-viewmodel-ktx-v284 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtxVersion" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+>>>>>>> Stashed changes
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -38,12 +55,18 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx" }
+<<<<<<< Updated upstream
 material-v140 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+=======
+material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+>>>>>>> Stashed changes
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "play-services-auth" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGsonVersion" }
+retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 
 
 [plugins]

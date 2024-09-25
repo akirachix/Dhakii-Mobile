@@ -53,8 +53,11 @@ class MainActivity2: AppCompatActivity() {
         }
 
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
     }
 
     private fun loadFragment(fragment: Fragment) {

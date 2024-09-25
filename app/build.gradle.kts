@@ -38,9 +38,12 @@ android {
         jvmTarget = "1.8"
     }
 
+<<<<<<< Updated upstream
     buildFeatures {
         viewBinding = true
     }
+=======
+>>>>>>> Stashed changes
 }
 
 dependencies {
@@ -72,6 +75,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+<<<<<<< Updated upstream
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
@@ -91,6 +95,20 @@ dependencies {
 
     // Additional dependencies
     implementation(libs.converter.gson)
+=======
+    implementation (libs.kotlinx.coroutines.android)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx.v284)
+    implementation (libs.androidx.lifecycle.livedata.ktx.v284)
+    implementation (libs.androidx.activity.ktx)
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.material.v190)
+    implementation (libs.retrofit2.retrofit)
+    implementation (libs.retrofit2.converter.gson)
+    implementation("androidx.appcompat:appcompat:1.6.1")
+
+
+
+>>>>>>> Stashed changes
 }
 
 fun kapt(s: String) {

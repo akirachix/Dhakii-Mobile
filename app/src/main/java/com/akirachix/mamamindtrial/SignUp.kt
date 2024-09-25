@@ -20,10 +20,9 @@ class SignUp : AppCompatActivity() {
             startActivity(intent)
 
 
-//
-//            binding.btnSignUp.setOnClickListener{
-//                validateLogin()
-//            }
+            binding.btnSignUp.setOnClickListener{
+                validateLogin()
+            }
         }
         binding.backButton.setOnClickListener{
             val intent = Intent(this,NextSignUp::class.java)
@@ -32,29 +31,28 @@ class SignUp : AppCompatActivity() {
 
     }
     fun validateLogin(){
-//        var formErr = false
-//        clearErrors()
-//        val password = binding.editTextPassword.text.toString()
-//        if  (password .isBlank()) {
-//            formErr = true
-//            binding.editTextPassword.error = "Password  is required"
-//        }
-//
-//        val confirmPassword = binding.editTextConfirmPassword.text.toString()
-//        if  ( confirmPassword .isBlank()) {
-//            formErr = true
-//            binding.editTextPassword.error = " Confrim Password  is required"
-//        }
-//
-//        val loaction = binding.editTextSubLocation.text.toString()
-//        if (loaction.isBlank()) {
-//            formErr = true
-//            binding.editTextSubLocation.error = " SubLocation is required"
-//        }
-//    }
-//
-//    fun clearErrors(){
-//        binding.editTextPassword.error = null
-//    }
-}
+        var formErr = false
+        clearErrors()
+        val password = binding.editTextPassword.text.toString()
+        if  (password .isBlank()) {
+            formErr = true
+            binding.editTextPassword.error = "Password  is required"
+        }
+
+        val confirmPassword = binding.editTextConfirmPassword.text.toString()
+        if  ( confirmPassword .isBlank()) {
+            formErr = true
+            binding.editTextPassword.error = " Confrim Password  is required"
+        }
+
+        val loaction = binding.editTextSubLocation.text.toString()
+        if (loaction.isBlank()) {
+            formErr = true
+            binding.editTextSubLocation.error = " SubLocation is required"
+        }
+    }
+
+    fun clearErrors(){
+        binding.editTextPassword.error = null
+    }
 }
