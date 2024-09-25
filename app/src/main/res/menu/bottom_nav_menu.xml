@@ -2,20 +2,23 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
+    <item
+        android:title="Home"
         android:icon="@drawable/ic_home_"
         android:id="@+id/home"
         android:iconTint="@color/yellow"/>
 
-    <item android:title="Careguide"
+    <item
+        android:title="Careguide"
         android:icon="@drawable/careguide"
         android:id="@+id/careguide"/>
-
-    <item android:title="Mothers"
+    <item
+        android:title="Mothers"
         android:icon="@drawable/mothers"
         android:id="@+id/mothers"/>
 
     <item android:title="Profile"
         android:icon="@drawable/profile"
         android:id="@+id/profile"/>
+
 </menu>

@@ -46,13 +46,17 @@ android {
 dependencies {
     // AndroidX libraries
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat.v140)
+
+
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
     // Firebase dependencies
     implementation(platform(libs.firebase.bom))
+    implementation (libs.androidx.appcompat.v140)
+    implementation (libs.material.v140)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
 
@@ -68,7 +72,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    
     // Kotlin Coroutines
     implementation(libs.kotlinx.coroutines.android)
 //    implementation(libs.kotlinx.coroutines.core)
@@ -84,4 +91,8 @@ dependencies {
 
     // Additional dependencies
     implementation(libs.converter.gson)
+}
+
+fun kapt(s: String) {
+
 }

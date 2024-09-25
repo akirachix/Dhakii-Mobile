@@ -9,4 +9,3 @@ interface ApiInterface {
     @POST("login_endpoint") // Replace with your actual endpoint
     fun login(@Body request: LogInRequest.LoginRequest): Call<LogInRequest.LoginResponse>
 }
-
