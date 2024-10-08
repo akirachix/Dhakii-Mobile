@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.services)
     id("kotlin-kapt") // Added for Room compiler
+    id ("kotlin-parcelize") // Add this for Parcelize support
 }
 
 android {
@@ -44,10 +45,10 @@ android {
 }
 
 dependencies {
+
     // AndroidX libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat.v140)
-
 
     implementation(libs.material)
     implementation(libs.androidx.activity)
@@ -55,8 +56,8 @@ dependencies {
 
     // Firebase dependencies
     implementation(platform(libs.firebase.bom))
-    implementation (libs.androidx.appcompat.v140)
-    implementation (libs.material.v140)
+    implementation(libs.androidx.appcompat.v140)
+    implementation(libs.material.v140)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
 
@@ -72,29 +73,34 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation ("com.google.firebase:firebase-auth:latest_version")
     implementation ("com.google.android.gms:play-services-auth:latest_version")
     
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    // SwipeRefreshLayout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+
     // Kotlin Coroutines
     implementation(libs.kotlinx.coroutines.android)
-//    implementation(libs.kotlinx.coroutines.core)
 
-    // Room database dependencies
+    // Room database dependencies (correcting Room dependencies)
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1") // Added kapt for Room compiler
+    implementation("androidx.room:room-ktx:2.6.1") // for Kotlin extensions
 
     // Retrofit for networking
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-//    implementation(libs.logging.interceptor)
 
     // Additional dependencies
     implementation(libs.converter.gson)
-}
-
-fun kapt(s: String) {
-
 }

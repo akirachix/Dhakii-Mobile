@@ -1,9 +1,9 @@
 package com.akirachix.mamamindtrial.ui
 
+import CareGuideFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.akirachix.mamamindtrial.CareGuideFragment
 import com.akirachix.mamamindtrial.R
 import com.akirachix.mamamindtrial.databinding.ActivityCareGuideBinding
 
@@ -35,3 +35,6 @@ class CareGuideActivity : AppCompatActivity() {
             .commit()
     }
 }
+
+
+

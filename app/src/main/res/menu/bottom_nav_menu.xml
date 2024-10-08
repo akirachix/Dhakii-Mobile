@@ -17,8 +17,4 @@
         android:icon="@drawable/mothers"
         android:id="@+id/mothers"/>
 
-    <item android:title="Profile"
-        android:icon="@drawable/profile"
-        android:id="@+id/profile"/>
-
 </menu>

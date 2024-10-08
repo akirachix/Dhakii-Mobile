@@ -1,4 +1,4 @@
-package com.akirachix.mamamindtrial.viewModel
+package com.akirachix.mamamindtrial.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

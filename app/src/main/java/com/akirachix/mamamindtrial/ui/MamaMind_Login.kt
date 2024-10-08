@@ -8,10 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.akirachix.mamamindtrial.HomePage
-import com.akirachix.mamamindtrial.NextSignUp
 import com.akirachix.mamamindtrial.R
-import com.akirachix.mamamindtrial.viewModel.SignInViewModel
 import com.akirachix.mamamindtrial.databinding.ActivityMamaMindLoginBinding
+import com.akirachix.mamamindtrial.viewmodel.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -42,10 +41,13 @@ class MamamindLogin : AppCompatActivity() {
         configureGoogleSignIn()
         observeLoginResult()
         setupClickListeners()
+        validateLogin()
 
-        binding.signUpText.setOnClickListener{
-            val intent = Intent(this, NextSignUp::class.java)
-            startActivity(intent)
+        binding.loginbtn.setOnClickListener{
+            if(validateLogin()) {
+                val intent = Intent(this, HomePage::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -68,7 +70,7 @@ class MamamindLogin : AppCompatActivity() {
         with(binding) {
             signInButton.setOnClickListener { signInWithGoogle() }
             loginbtn.setOnClickListener { handleEmailLogin() }
-            signUpText.setOnClickListener { navigateToSignUp() }
+
         }
     }
 
@@ -127,6 +129,31 @@ class MamamindLogin : AppCompatActivity() {
 
     private fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+    fun validateLogin(): Boolean {
+        var formErr = false
+        clearErrors()
+
+        val username = binding.editTextEmail.text.toString()
+        if (username.isBlank()) {
+            formErr = true
+            binding.editTextEmail.error = " Email is required"
+        }
+
+        val password = binding.passwordInput.text.toString()
+        if (password.isBlank()) {
+            formErr = true
+            binding.passwordInput.error = "Password is required"
+        }
+
+
+        return !formErr // Return true if there are no errors
+    }
+
+    fun clearErrors() {
+        binding.editTextEmail.error = null
+        binding.passwordInput.error = null
+
     }
 
 }

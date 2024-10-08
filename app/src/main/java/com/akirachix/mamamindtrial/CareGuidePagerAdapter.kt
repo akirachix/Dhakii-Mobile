@@ -17,3 +17,5 @@ class CareGuidePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
         }
     }
 }
+
+
