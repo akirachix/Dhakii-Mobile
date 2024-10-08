@@ -8,12 +8,20 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.akirachix.mamamindtrial.HomePage
 import com.akirachix.mamamindtrial.R
-import com.akirachix.mamamindtrial.Successfull_submission
+import com.akirachix.mamamindtrial.api.MotherDetail
 import com.akirachix.mamamindtrial.databinding.ActivityMainBinding
+import java.util.Date
 
 class MainActivity2: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var dueVisitAdapter: MothersAdapter
+    private lateinit var visitedAdapter: MothersAdapter
+
+    // Lists for mothers
+    private var dueVisitMothersList = mutableListOf<MotherDetail>()
+    private var visitedMothersList = mutableListOf<MotherDetail>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +64,17 @@ class MainActivity2: AppCompatActivity() {
 
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == MothersAdapter.REQUEST_CODE_QUESTIONS && resultCode == RESULT_OK) {
+            val visitedMother = data?.getStringExtra("mother_name")
+            visitedMother?.let {
+                // Call a function to move this mother to the Visited tab
+                moveMotherToVisited(it)
+            }
+        }
+    }
 
     private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
@@ -92,6 +111,18 @@ class MainActivity2: AppCompatActivity() {
                     R.color.color_for_main_activity
                 )
             )
+        }
+    }
+
+    private fun moveMotherToVisited(motherName: String) {
+        val mother = dueVisitMothersList.find { "${it.firstName} ${it.lastName}" == motherName }
+        if (mother != null) {
+            dueVisitMothersList.remove(mother)
+            dueVisitAdapter.notifyDataSetChanged() // Update Due Visit UI
+
+            mother.lastVisitDate = Date() // Set the visit date
+            visitedMothersList.add(mother)
+            visitedAdapter.notifyDataSetChanged() // Update Visited UI
         }
     }
 }

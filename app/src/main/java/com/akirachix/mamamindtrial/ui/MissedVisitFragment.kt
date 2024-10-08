@@ -4,58 +4,58 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.akirachix.mamamindtrial.api.MotherDetail
-
-import com.akirachix.mamamindtrial.api.RetrofitClient
-
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import com.akirachix.mamamindtrial.R
-
+import com.akirachix.mamamindtrial.api.MotherDetail
 import com.akirachix.mamamindtrial.databinding.FragmentMissedVisitBinding
 
 class MissedVisitFragment : Fragment() {
 
     private lateinit var binding: FragmentMissedVisitBinding
     private lateinit var mothersAdapter: MothersAdapter
+    private var missedVisitMothersList = mutableListOf<MotherDetail>() // List to hold passed data
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMissedVisitBinding.inflate(inflater, container, false)
+
+        // Get the list of missed visit mothers passed via newInstance()
+        arguments?.let {
+            missedVisitMothersList = it.getParcelableArrayList(MOTHERS_LIST_KEY) ?: mutableListOf()
+        }
+
         setupRecyclerView()
-        fetchDueMothers()
+
         return binding.root
     }
 
     private fun setupRecyclerView() {
-        // Use yellow color for Due Visit
+        // Use red color for Missed Visit
         val viewColor = resources.getColor(R.color.red, null)
-        mothersAdapter = MothersAdapter(emptyList(), viewColor)
+
+        // Create the adapter using the passed list of missed visit mothers
+        val mothersNames = missedVisitMothersList.map { "${it.firstName} ${it.lastName}" }.toMutableList()
+        mothersAdapter = MothersAdapter(missedVisitMothersList, viewColor){
+
+        }
+
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mothersAdapter
         }
     }
 
-    private fun fetchDueMothers() {
-        val call = RetrofitClient.apiService.getMothersList()
-        call.enqueue(object : Callback<List<MotherDetail>> {
-            override fun onResponse(call: Call<List<MotherDetail>>, response: Response<List<MotherDetail>>) {
-                if (response.isSuccessful) {
-                    val mothers = response.body() ?: emptyList()
-                    val mothersNames = mothers.map { "${it.firstName} ${it.lastName}" }
-                    mothersAdapter.updateMothers(mothersNames.filter { it.isNotEmpty() })
-                } else {
-                    Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
-                }
-            }
+    // Companion object to help create the fragment and pass data
+    companion object {
+        private const val MOTHERS_LIST_KEY = "missed_visit_mothers_list"
 
-            override fun onFailure(call: Call<List<MotherDetail>>, t: Throwable) {
-                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
+        // Method to create an instance of the fragment and pass the data
+        fun newInstance(missedVisitMothers: List<MotherDetail>): MissedVisitFragment {
+            val fragment = MissedVisitFragment()
+            val args = Bundle()
+            args.putParcelableArrayList(MOTHERS_LIST_KEY, ArrayList(missedVisitMothers)) // Passing as ArrayList
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

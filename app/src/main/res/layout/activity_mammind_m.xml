@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="Your journey to joyful motherhood starts now!"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -63,6 +64,7 @@
         android:layout_marginTop="40dp"
         android:fontFamily="@font/nunito_bold"
         android:text="MamaMind"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

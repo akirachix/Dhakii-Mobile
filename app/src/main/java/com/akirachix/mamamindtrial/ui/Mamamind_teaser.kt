@@ -18,7 +18,7 @@ class Mamamind_teaser : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.nextbutton3.setOnClickListener {
-            val intent = Intent(this, MamamindLogin::class.java)
+            val intent = Intent(this, Mammind_M::class.java)
             startActivity(intent)
         }
 

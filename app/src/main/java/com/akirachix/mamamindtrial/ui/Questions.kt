@@ -1,21 +1,19 @@
 package com.akirachix.mamamindtrial.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.akirachix.mamamindtrial.QuestionsAdapter
+import com.akirachix.mamamindtrial.R
+import com.akirachix.mamamindtrial.Successfull_submission
+import com.akirachix.mamamindtrial.databinding.ActivityQuestionsBinding
 import com.akirachix.mamamindtrial.network.Question
 import com.akirachix.mamamindtrial.network.RetrofitClient
-import com.akirachix.mamamindtrial.R
-import com.akirachix.mamamindtrial.QuestionsAdapter
-import com.akirachix.mamamindtrial.Successfull_submission
-import com.akirachix.mamamindtrial.api.MotherDetail
-import com.akirachix.mamamindtrial.databinding.ActivityQuestionsBinding
-import com.akirachix.mamamindtrial.databinding.ActivitySuccessfullSubmissionBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,11 +27,14 @@ class Questions  : AppCompatActivity() {
         binding = ActivityQuestionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         supportActionBar?.hide()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        questionAdapter = QuestionsAdapter(listOf())
+
+        questionAdapter = QuestionsAdapter(listOf()) { updatedScore ->
+            updateScoreView(updatedScore)
+        }
+
         binding.recyclerView.adapter = questionAdapter
 
         binding.btnSubmit.setOnClickListener {
@@ -67,7 +68,28 @@ class Questions  : AppCompatActivity() {
         val totalScore = questionAdapter.getTotalScore()
         Toast.makeText(this, "Total Score: $totalScore", Toast.LENGTH_SHORT).show()
 
-        val intent = Intent(this, Successfull_submission::class.java)
-        startActivity(intent)
+        // Prepare the result to send back to the previous activity
+        val resultIntent = Intent()
+
+        // Assuming the mother's name or ID was passed to this activity, get it from the intent
+        val motherName = intent.getStringExtra("mother_name") ?: "Unknown Mother" // Adjust accordingly
+
+        resultIntent.putExtra("mother_name", motherName)
+
+        // Set the result to OK and pass back the mother's name
+        setResult(Activity.RESULT_OK, resultIntent)
+
+        // Finish the Questions activity and return to the previous activity
+        finish()
+
+        // Optionally navigate to the success page after finishing the Questions activity
+        val successIntent = Intent(this, Successfull_submission::class.java)
+        startActivity(successIntent)
+    }
+
+    private fun updateScoreView(totalScore: Int) {
+        // Find the score TextView in the upper section and update it
+        val scoreTextView: TextView = findViewById(R.id.countScore) // Replace with actual ID
+        scoreTextView.text = totalScore.toString()
     }
 }

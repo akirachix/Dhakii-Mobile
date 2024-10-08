@@ -11,8 +11,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.akirachix.mamamindtrial.network.Question
 
-class QuestionsAdapter(private var questions: List<Question>) : RecyclerView.Adapter<QuestionsAdapter.QuestionViewHolder>() {
+class QuestionsAdapter(
 
+    private var questions: List<Question>,
+    private val onScoreUpdated: (Int) -> Unit // Add a callback for score updates
+) : RecyclerView.Adapter<QuestionsAdapter.QuestionViewHolder>() {
 
     private val scores: MutableMap<Int, Int> = mutableMapOf()
 
@@ -67,6 +70,7 @@ class QuestionsAdapter(private var questions: List<Question>) : RecyclerView.Ada
                     else -> 0
                 }
                 scores[question.id] = selectedScore
+                onScoreUpdated(getTotalScore()) // Call the callback with the updated total score
             }
         }
 

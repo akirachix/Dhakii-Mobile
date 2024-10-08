@@ -9,4 +9,5 @@
         <item name="android:background">@drawable/google_button_border</item>
         <item name="android:textColor">@color/green</item> <!-- Green text -->
     </style>
+    <style name="Theme.App.Light" parent="Theme.MaterialComponents.Light.NoActionBar"> </style>
 </resources>
