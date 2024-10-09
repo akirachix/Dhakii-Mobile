@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="purple_500">#6200EA</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="blue">#02A6A6</color>
+    <color name="red">#FD1D1D</color>
+    <color name="green">#43A02A</color>
+    <color name="color_for_second_activity">#FD1D1D</color>
+    <color name="color_for_visited_activity">#43A02A</color>
+    <color name="color_for_main_activity">#02A6A6</color>
+    <color name="border_colo">#FF000000</color>
+    <color name="border_color">#756A6A</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="teal_green">#008080</color> <!-- Adjust the hex code if needed -->
+    <color name="yellow">#F18721</color>
+    <color name="orange">#F18721</color>
+    <color name="buttonBackground">#F18721</color>
+    <color name="buttonText">#FFFFFF</color>
+    <color name="questionColor">#02A6A6</color>
+    <color name="bluey">#02A6A6</color>
+
+
+
+</resources>
+
+
+
