@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "860568886981",
+    "project_id": "mamamind-d37b1",
+    "storage_bucket": "mamamind-d37b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860568886981:android:78045ed1e293153d621aac",
+        "android_client_info": {
+          "package_name": "com.akirachix.mamamind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860568886981-e7g7cd7pnem5tnoe2p12roc9ef052kod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFihrit3t7DMRvlSrMr6pK1Dnh2DwQ0K8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860568886981-e7g7cd7pnem5tnoe2p12roc9ef052kod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860568886981:android:47e170cb2d0e4c6e621aac",
+        "android_client_info": {
+          "package_name": "com.akirachix.mamamindtrial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860568886981-gi5dvipvt3mn7u68c4h7l90evc0ua8dm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akirachix.mamamindtrial",
+            "certificate_hash": "10c20ee90b17a79cded91846a90d492d30c0c348"
+          }
+        },
+        {
+          "client_id": "860568886981-e7g7cd7pnem5tnoe2p12roc9ef052kod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFihrit3t7DMRvlSrMr6pK1Dnh2DwQ0K8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860568886981-e7g7cd7pnem5tnoe2p12roc9ef052kod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
