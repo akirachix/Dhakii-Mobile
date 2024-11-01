@@ -3,25 +3,33 @@ package com.akirachix.mamamindtrial
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.appcompat.widget.SearchView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.akirachix.mamamindtrial.api.MotherDetail
+import com.akirachix.mamamindtrial.api.RetrofitClient
 import com.akirachix.mamamindtrial.api.VisitStatus
 import com.akirachix.mamamindtrial.databinding.FragmentMothersBinding
 import com.akirachix.mamamindtrial.ui.DueVisitFragment
 import com.akirachix.mamamindtrial.ui.MissedVisitFragment
 import com.akirachix.mamamindtrial.ui.MothersAdapter
+import com.akirachix.mamamindtrial.ui.MothersAdapter.Companion.REQUEST_CODE_QUESTIONS
 import com.akirachix.mamamindtrial.ui.Questions
 import com.akirachix.mamamindtrial.ui.VisitedFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.Date
 
 class MothersFragment : Fragment() {
 
     private lateinit var binding: FragmentMothersBinding
+    private var originalDueVisitMothersList = mutableListOf<MotherDetail>()
     private var dueVisitMothersList = mutableListOf<MotherDetail>()
     private var missedVisitMothersList = mutableListOf<MotherDetail>()
     private var visitedMothersList = mutableListOf<MotherDetail>()
@@ -33,24 +41,21 @@ class MothersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMothersBinding.inflate(inflater, container, false)
 
-        // Initialize adapters for Due Visit and Visited lists
+        // Initialize adapters
         dueVisitAdapter = MothersAdapter(dueVisitMothersList, R.color.blue) { mother ->
             openQuestionsActivity(mother)
         }
-        visitedAdapter = MothersAdapter(visitedMothersList, R.color.green) { mother ->
-            // Do nothing for visited mothers (button should not be clickable)
-        }
+        visitedAdapter = MothersAdapter(visitedMothersList, R.color.green) { }
         missedVisitAdapter = MothersAdapter(missedVisitMothersList, R.color.red) { mother ->
-            // Handle missed visit logic if needed
+            openQuestionsActivity(mother)
         }
 
-        // Setup TabLayout with ViewPager2
+        // Setup ViewPager and Tabs
         val adapter = MothersPagerAdapter(this)
         binding.viewPager.adapter = adapter
-
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "Missed Visits"
@@ -60,114 +65,147 @@ class MothersFragment : Fragment() {
             }
         }.attach()
 
+        setupSearchView()
+        loadMothersFromBackend()
+
         return binding.root
     }
 
-    // Function to open the Questions Activity
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterMothersList(newText)
+                return true
+            }
+        })
+    }
+
+    private fun filterMothersList(query: String?) {
+        val searchText = query?.lowercase() ?: ""
+        dueVisitMothersList.clear()
+
+        if (searchText.isEmpty()) {
+            dueVisitMothersList.addAll(originalDueVisitMothersList)
+        } else {
+            dueVisitMothersList.addAll(originalDueVisitMothersList.filter {
+                it.firstName.lowercase().contains(searchText) || it.lastName.lowercase().contains(searchText)
+            })
+        }
+
+        dueVisitAdapter.notifyDataSetChanged()
+    }
+
     private fun openQuestionsActivity(mother: MotherDetail) {
         val intent = Intent(requireContext(), Questions::class.java)
         intent.putExtra("mother_name", mother.firstName)
-        startActivityForResult(intent, MothersAdapter.REQUEST_CODE_QUESTIONS)
+        startActivityForResult(intent, REQUEST_CODE_QUESTIONS)
     }
 
-    // Handle the result from QuestionsActivity when a mother is visited
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == MothersAdapter.REQUEST_CODE_QUESTIONS && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_CODE_QUESTIONS && resultCode == Activity.RESULT_OK) {
             val visitedMotherName = data?.getStringExtra("mother_name")
-            visitedMotherName?.let {
-                moveMotherToVisited(it)
-            }
+            visitedMotherName?.let { moveMotherToVisited(it) }
         }
     }
 
-    // Move the mother from the Due Visit list to the Visited list
     private fun moveMotherToVisited(motherName: String) {
         val mother = dueVisitMothersList.find { "${it.firstName} ${it.lastName}" == motherName }
         if (mother != null) {
             dueVisitMothersList.remove(mother)
-            dueVisitAdapter.notifyDataSetChanged() // Update Due Visit UI
-
-            mother.lastVisitDate = Date() // Set the visit date
-            visitedMothersList.add(mother)
-            visitedAdapter.notifyDataSetChanged() // Update Visited UI
+            originalDueVisitMothersList.remove(mother)  // Remove from original list too
+            mother.lastVisitDate = Date()
+            mother.visitStatus = VisitStatus.VISITED
+            visitedMothersList.add(0, mother)
+            updateAdapters()
         }
     }
 
-    // Load and categorize mothers into Due, Missed, and Visited lists
-    private fun loadAndCategorizeMothers() {
-        val mothersList: List<MotherDetail> = getMothersFromBackend() // Simulate fetching from backend
+    private fun loadMothersFromBackend() {
+        val call = RetrofitClient.apiService.getMothersList()
+        call.enqueue(object : Callback<List<MotherDetail>> {
+            override fun onResponse(call: Call<List<MotherDetail>>, response: Response<List<MotherDetail>>) {
+                if (response.isSuccessful) {
+                    val mothersList = response.body()
+                        ?.distinctBy { "${it.firstName} ${it.lastName}".lowercase() }
+                        ?: emptyList()
+
+                    Log.d("MothersFragment", "Fetched Unique Mothers Count: ${mothersList.size}")
+                    categorizeMothers(mothersList)
+                } else {
+                    Log.e("MothersFragment", "Failed to fetch mothers. Error: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<MotherDetail>>, t: Throwable) {
+                Log.e("MothersFragment", "Error fetching mothers: ${t.message}")
+            }
+        })
+    }
+
+    private fun categorizeMothers(mothersList: List<MotherDetail>) {
+        dueVisitMothersList.clear()
+        missedVisitMothersList.clear()
+        visitedMothersList.clear()
+
+        val currentTime = Date().time
+        val twoWeeksInMillis = 14 * 24 * 60 * 60 * 1000L
 
         mothersList.forEach { mother ->
-            when (updateVisitStatus(mother)) {
-                VisitStatus.DUE_VISIT -> dueVisitMothersList.add(mother)
-                VisitStatus.MISSED_VISIT -> missedVisitMothersList.add(mother)
-                VisitStatus.VISITED -> visitedMothersList.add(mother)
+            when {
+                mother.visitStatus == VisitStatus.MISSED_VISIT -> {
+                    missedVisitMothersList.add(mother)
+                }
+                mother.isVisited && mother.lastVisitDate != null &&
+                        currentTime - mother.lastVisitDate!!.time >= twoWeeksInMillis -> {
+                    mother.visitStatus = VisitStatus.DUE_VISIT
+                    dueVisitMothersList.add(mother)
+                }
+                mother.isVisited -> {
+                    visitedMothersList.add(mother)
+                }
+                else -> {
+                    mother.visitStatus = VisitStatus.DUE_VISIT
+                    dueVisitMothersList.add(mother)
+                }
             }
         }
 
-        // Notify adapters to update their respective lists
+        // Make a copy of the original dueVisit list to retain full data for search purposes
+        originalDueVisitMothersList.clear()
+        originalDueVisitMothersList.addAll(dueVisitMothersList)
+
+        // Sort each list alphabetically by first name
+        dueVisitMothersList.sortBy { it.firstName.lowercase() }
+        missedVisitMothersList.sortBy { it.firstName.lowercase() }
+        visitedMothersList.sortBy { it.firstName.lowercase() }
+
+        Log.d("MothersFragment", "Total Due Visit: ${dueVisitMothersList.size}")
+        Log.d("MothersFragment", "Total Missed Visit: ${missedVisitMothersList.size}")
+        Log.d("MothersFragment", "Total Visited: ${visitedMothersList.size}")
+
+        updateAdapters()
+    }
+
+    private fun updateAdapters() {
         dueVisitAdapter.notifyDataSetChanged()
         visitedAdapter.notifyDataSetChanged()
         missedVisitAdapter.notifyDataSetChanged()
     }
 
-    // Example logic to update the visit status based on time and last visit date
-    private fun updateVisitStatus(mother: MotherDetail): VisitStatus {
-        val currentDate = Date()
-        val twoWeeksInMillis = 14 * 24 * 60 * 60 * 1000L // 14 days in milliseconds
-
-        if (mother.lastVisitDate != null && currentDate.before(mother.dueDate)) {
-            return VisitStatus.VISITED
-        }
-        if (currentDate.time - mother.dueDate.time > twoWeeksInMillis) {
-            return VisitStatus.MISSED_VISIT
-        }
-        return VisitStatus.DUE_VISIT
-    }
-
-    // Periodically check if 14 days have passed and move back to Due Visit list
-    fun checkForDueMothers() {
-        val currentTime = System.currentTimeMillis()
-        val mothersToMoveBack = visitedMothersList.filter { mother ->
-            mother.lastVisitDate != null && currentTime - mother.lastVisitDate!!.time >= 14 * 24 * 60 * 60 * 1000L
-        }
-
-        // Move them back to Due Visit list
-        mothersToMoveBack.forEach { mother ->
-            visitedMothersList.remove(mother)
-            dueVisitMothersList.add(mother)
-        }
-
-        // Notify adapters to update UI
-        dueVisitAdapter.notifyDataSetChanged()
-        visitedAdapter.notifyDataSetChanged()
-    }
-
     private inner class MothersPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
-
-        override fun getItemCount(): Int {
-            return 3 // Number of tabs
-        }
-
+        override fun getItemCount() = 3
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> MissedVisitFragment.newInstance(missedVisitMothersList)
                 1 -> DueVisitFragment.newInstance(dueVisitMothersList)
                 2 -> VisitedFragment.newInstance(visitedMothersList)
-                else -> Fragment() // Fallback case, shouldn't happen
+                else -> Fragment()
             }
         }
     }
-
-    private fun getMothersFromBackend(): List<MotherDetail> {
-        // Simulated list of mothers for the example
-        return listOf(
-            MotherDetail(1, "Jane", "Doe", "1990-01-01", 2, "2023-01-01", "123456789", "Married", "SubLocation", "Village", Date(), Date(), VisitStatus.DUE_VISIT),
-            // Add more mothers here
-        )
-    }
-
-
 }

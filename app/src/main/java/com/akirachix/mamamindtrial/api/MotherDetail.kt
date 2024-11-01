@@ -1,5 +1,6 @@
 package com.akirachix.mamamindtrial.api
 
+
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -17,14 +18,37 @@ data class MotherDetail(
     @SerializedName("marital_status") val maritalStatus: String,
     @SerializedName("sub_location") val subLocation: String,
     @SerializedName("village") val village: String,
+    @SerializedName("registered_date") val registeredDate: String,
+    @SerializedName("updated_at") val updatedAt: String,
 
-    // Add fields for tracking visits
     var lastVisitDate: Date?,   // Date when the mother was last visited (null if never visited)
-    var dueDate: Date,          // Date when the next visit is due
-    var visitStatus: VisitStatus // Status of the visit (Due, Missed, Visited)
-) : Parcelable
+    var dueDate: Date?,         // Date when the next visit is due (can be null)
 
-// Enum to track the visit status
+    @SerializedName("status") private var statusInt: Int
+) : Parcelable {
+
+    // Map the statusInt to VisitStatus enum correctly
+    var visitStatus: VisitStatus
+        get() = when (statusInt) {
+            1 -> VisitStatus.DUE_VISIT
+            0 -> VisitStatus.VISITED
+            -1 -> VisitStatus.MISSED_VISIT
+            else -> VisitStatus.DUE_VISIT // Default to DUE_VISIT if unknown value
+        }
+        set(value) {
+            statusInt = when (value) {
+                VisitStatus.DUE_VISIT -> 1
+                VisitStatus.VISITED -> 0
+                VisitStatus.MISSED_VISIT -> -1
+            }
+        }
+
+    // A derived boolean to check if mother is "visited"
+    val isVisited: Boolean
+        get() = statusInt == 0
+}
+
+// Enum class to represent visit statuses
 enum class VisitStatus {
     DUE_VISIT,    // The mother is due for a visit
     MISSED_VISIT, // The mother missed a visit

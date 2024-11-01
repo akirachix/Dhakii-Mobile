@@ -1,5 +1,6 @@
 package com.akirachix.mamamindtrial.network
 
+import com.akirachix.mamamindtrial.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

@@ -2,93 +2,81 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/mamamindlogo"
         android:label="@string/MamaMind"
-        android:theme="@style/Theme.MamaMindTrial"
         android:roundIcon="@drawable/mamamindlogo"
         android:supportsRtl="true"
+        android:theme="@style/Theme.MamaMindTrial"
         tools:targetApi="31">
 
-        <!-- CareGuideActivity -->
+        <!-- Login Activity -->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true">
+
+        </activity>
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+        <!-- Care Guide Activity -->
         <activity
             android:name=".ui.CareGuideActivity"
             android:exported="true" />
 
-
-        <!-- MainActivity -->
-
-
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-
-        <!-- Other activities -->
-
-
-
-
+        <!-- MainActivity2 -->
         <activity
             android:name=".ui.MainActivity2"
             android:exported="true" />
 
-
+        <!-- Home Page -->
         <activity
             android:name=".HomePage"
             android:exported="false" />
 
-        <activity
-            android:name=".ui.MamamindLogin"
-            android:exported="true" />
-
+        <!-- Mamamind Teaser -->
         <activity
             android:name=".ui.Mamamind_teaser"
             android:exported="false" />
 
+        <!-- Mammind_M Activity -->
         <activity
             android:name=".ui.Mammind_M"
             android:exported="false" />
 
-
-
+        <!-- Article Detail Activity -->
         <activity
             android:name=".ui.ArticleDetailActivity"
             android:exported="false" />
 
+        <!-- SignUp Activity -->
+        <activity
+            android:name=".Successfull_submission"
+            android:exported="false" />
+
+        <!-- Questions Activity -->
+        <activity
+            android:name=".ui.Questions"
+            android:exported="true" />
+
         <!-- Meta-data for preloaded fonts -->
-
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <!-- SignUp Activity -->
-
-
-
-        <activity
-            android:name=".Successfull_submission"
-            android:exported="false" />
-        <activity
-            android:name=".ui.Questions"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
     </application>
-
 </manifest>
