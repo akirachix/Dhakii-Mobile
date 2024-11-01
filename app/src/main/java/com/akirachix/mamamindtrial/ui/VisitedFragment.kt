@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.akirachix.mamamindtrial.R
 import com.akirachix.mamamindtrial.api.MotherDetail
 import com.akirachix.mamamindtrial.api.RetrofitClient
+import com.akirachix.mamamindtrial.api.VisitStatus
 import com.akirachix.mamamindtrial.databinding.FragmentVisitedBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,28 +20,21 @@ class VisitedFragment : Fragment() {
 
     private lateinit var binding: FragmentVisitedBinding
     private lateinit var mothersAdapter: MothersAdapter
-    private var visitedMothersList = mutableListOf<String>() // Define the visited mothers list
-    private lateinit var visitedMothersAdapter: MothersAdapter // Define the adapter
-
+    private var visitedMothersList = mutableListOf<MotherDetail>()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentVisitedBinding.inflate(inflater, container, false)
-
         setupRecyclerView()
         fetchVisitedMothers()
         return binding.root
     }
 
     private fun setupRecyclerView() {
-        // Use green color for Visited
         val viewColor = resources.getColor(R.color.green, null)
-        mothersAdapter = MothersAdapter(mutableListOf(), viewColor) {
-
-        }
+        mothersAdapter = MothersAdapter(visitedMothersList, viewColor) { }
         binding.visitedRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mothersAdapter
@@ -49,18 +43,17 @@ class VisitedFragment : Fragment() {
 
     private fun fetchVisitedMothers() {
         val call = RetrofitClient.apiService.getMothersList()
-        call.enqueue(object : Callback<List<MotherDetail>> {
-            override fun onResponse(
-                call: Call<List<MotherDetail>>,
-                response: Response<List<MotherDetail>>
-            ) {
-                if (response.isSuccessful) {
-                    val mothers = response.body() ?: emptyList()
 
-                    // Pass the entire list of MotherDetail objects directly
-                    mothersAdapter.updateMothers(mothers.filter { it.firstName.isNotEmpty() })
+        call.enqueue(object : Callback<List<MotherDetail>> {
+            override fun onResponse(call: Call<List<MotherDetail>>, response: Response<List<MotherDetail>>) {
+                if (response.isSuccessful) {
+                    visitedMothersList.clear()
+                    visitedMothersList.addAll(
+                        response.body()?.filter { it.visitStatus == VisitStatus.VISITED } ?: emptyList()
+                    )
+                    mothersAdapter.notifyDataSetChanged()
                 } else {
-                    Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Failed to fetch visited mothers", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -71,22 +64,16 @@ class VisitedFragment : Fragment() {
     }
 
 
+
     companion object {
-        private const val MOTHERS_LIST_KEY = "visited_mothers_list" // Define the key here
+        private const val MOTHERS_LIST_KEY = "visited_mothers_list"
 
         fun newInstance(visitedMothers: List<MotherDetail>): VisitedFragment {
             val fragment = VisitedFragment()
             val args = Bundle()
-            args.putParcelableArrayList(
-                MOTHERS_LIST_KEY,
-                ArrayList(visitedMothers)
-            ) // Passing as ArrayList
+            args.putParcelableArrayList(MOTHERS_LIST_KEY, ArrayList(visitedMothers))
             fragment.arguments = args
             return fragment
         }
-    }
-    fun addMotherToVisited(motherName: String) {
-        visitedMothersList.add(motherName)
-        visitedMothersAdapter.notifyDataSetChanged() // Notify the adapter to refresh the data
     }
 }

@@ -23,7 +23,7 @@ class Mamamind_teaser : AppCompatActivity() {
         }
 
         binding.button4.setOnClickListener {
-            val intent =Intent(this, MamamindLogin::class.java)
+            val intent =Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 

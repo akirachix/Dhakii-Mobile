@@ -1,19 +1,27 @@
 package com.akirachix.mamamindtrial.api
 
+import com.akirachix.mamamindtrial.utils.Constants.Companion.BASE_URL
+import com.google.android.gms.common.internal.Constants
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private const val BASE_URL = "https://mamamind-db02af72f48f.herokuapp.com/"
 
-    private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+    private val okHttpClient = OkHttpClient.Builder()
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
+        .build()
 
-    fun <S> createService(serviceClass: Class<S>): S {
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
+        .build()
+
+    fun <T> createService(serviceClass: Class<T>): T {
         return retrofit.create(serviceClass)
     }
 }
