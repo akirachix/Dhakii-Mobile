@@ -1,5 +1,6 @@
 package com.akirachix.mamamindtrial.ui
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
@@ -102,7 +103,7 @@ class MainActivity2: AppCompatActivity() {
                 ContextCompat.getColor(
                     this,
                     R.color.color_for_main_activity
-            )
+                )
             )
 
             R.id.visitedTab -> selectedTab.setTextColor(
@@ -126,4 +127,3 @@ class MainActivity2: AppCompatActivity() {
         }
     }
 }
-

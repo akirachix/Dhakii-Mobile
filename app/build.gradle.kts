@@ -43,27 +43,25 @@ android {
         viewBinding = true
     }
 }
-
 dependencies {
 
     // AndroidX libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat.v140)
-
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
     // Firebase dependencies
     implementation(platform(libs.firebase.bom))
-    implementation(libs.androidx.appcompat.v140)
-    implementation(libs.material.v140)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
 
     // Lifecycle components
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
 
     // Navigation components
     implementation(libs.androidx.navigation.fragment.ktx)
@@ -74,13 +72,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
-    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation ("com.google.firebase:firebase-auth:latest_version")
-    implementation ("com.google.android.gms:play-services-auth:latest_version")
-    
-
     // Glide for image loading
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
@@ -88,19 +79,19 @@ dependencies {
     // SwipeRefreshLayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
-
     // Kotlin Coroutines
     implementation(libs.kotlinx.coroutines.android)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
-    // Room database dependencies (correcting Room dependencies)
+    // Room database dependencies
     implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1") // Added kapt for Room compiler
-    implementation("androidx.room:room-ktx:2.6.1") // for Kotlin extensions
+    kapt("androidx.room:room-compiler:2.6.1") // Room compiler with KAPT
+    implementation("androidx.room:room-ktx:2.6.1") // Kotlin extensions
 
     // Retrofit for networking
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // Additional dependencies
-    implementation(libs.converter.gson)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3") // Add this line
 }
+

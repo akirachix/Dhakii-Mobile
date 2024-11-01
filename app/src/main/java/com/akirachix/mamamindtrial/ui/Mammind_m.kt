@@ -15,7 +15,7 @@ class Mammind_M : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.nextbtn.setOnClickListener {
-            val intent = Intent(this, MamamindLogin::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         binding.skipbtn.setOnClickListener {
